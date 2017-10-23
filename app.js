@@ -5,9 +5,6 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-const convert = require('koa-convert')
-const session = require('koa-generic-session')
-const config = require('./config');
 
 // error handler
 onerror(app)
