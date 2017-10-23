@@ -1,5 +1,6 @@
 const mongoose =  require('mongoose-q')(require('mongoose'));
 const config = require('../config');
+const ListenSchema = require('./listen')
 
 // 数据库
 require('mongoose').Promise = global.Promise
@@ -16,7 +17,7 @@ mongoose.connect(mongodb, {
         console.error(err);
     }
 });
-
+mongoose.model('listen', ListenSchema);
 module.exports = function (name) {
     name = name.toLowerCase();
     return mongoose.model(name);

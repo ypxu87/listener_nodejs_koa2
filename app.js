@@ -5,7 +5,7 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-
+const listen = require('./routes/listen')
 // error handler
 onerror(app)
 app.keys = ['listener_nodejs_koa2'];
@@ -30,7 +30,7 @@ app.use(async (ctx, next) => {
         ctx.model = require('./models');
     await next();
 })
-
+app.use(listen.routes(), listen.allowedMethods());
 // error-handling
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)

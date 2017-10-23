@@ -9,8 +9,9 @@ const config = {
         pass: '',
         host: '127.0.0.1',
         port: 27017,
-        database: 'listener'
-    }
+        database: 'listen'
+    },
+    root:__dirname
 }
 
 module.exports = config;
