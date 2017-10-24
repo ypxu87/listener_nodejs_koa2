@@ -2,7 +2,7 @@ const router = require('koa-router')();
 const querystring = require('querystring');
 const validator = require('validator')
 const config = require('../config')
-const Transfer = require('../middlewares/transfer')
+const fs = require('fs')
 
 router.get('/listen/list',async function (ctx,next) {
     if (!ctx.req._parsedUrl.query) {
@@ -51,9 +51,8 @@ router.get('/listen/audio',async function (ctx,next) {
         return;
     }
     var params = querystring.parse(ctx.req._parsedUrl.query);
-    var transfer = new Transfer(ctx.req, ctx.res);
-    var filePath = config.root+'/public/audio/'+params.audio;
-    transfer.Download(filePath);
+    ctx.body = fs.createReadStream(config.root+'/public/audio/'+params.audio);
+    return next
 })
 
 module.exports = router;

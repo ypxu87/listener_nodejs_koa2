@@ -6,6 +6,9 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const listen = require('./routes/listen')
+const range = require('koa-range');
+app.use(range);
+
 // error handler
 onerror(app)
 app.keys = ['listener_nodejs_koa2'];
