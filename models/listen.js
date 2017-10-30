@@ -10,7 +10,12 @@ var ListenSchema = new mongoose.Schema({
 })
 
 ListenSchema.statics.getSourceList = async function (type) {
-    let list = await this.find({type:type},{content:0,audio:0})
+    let list = []
+    if(type == "all"){
+        list = await this.find({},{content:0,audio:0})
+    }else{
+        list = await this.find({type:type},{content:0,audio:0})
+    }
     return list;
 }
 
