@@ -5,8 +5,8 @@
 const config = {
     // 数据库连接
     mongodb: {
-        user: '',
-        pass: '',
+        user: 'asenxu',
+        pass: '123456',
         host: '127.0.0.1',
         port: 27017,
         database: 'listen'
